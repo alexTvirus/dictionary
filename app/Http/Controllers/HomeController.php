@@ -57,7 +57,7 @@ class HomeController extends Controller
         $query = Data::query();
 
         if (!empty($request['danh_muc'])) {
-            $query->where("danh_muc", '%' .$request['danh_muc']. '%');
+            $query->where("danh_muc", 'like', '%' .$request['danh_muc']. '%');
         }
         if (!empty($request['keyword'])) {
             $query->where("keyword", 'like', '%' . $request['keyword'] . '%');

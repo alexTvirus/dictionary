@@ -12,19 +12,53 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/save/{ip}/{user}/{pass}/{country}', function() {
-    $arr = request()->route()->parameters();
-    $data = [
-        'ip'=>$arr['ip'],
-        'user'=>$arr['user'],
-        'password'=>$arr['pass'],
-        'country'=>$arr['country'],
-        'created_at'=>date('Y-m-d')
-    ];
-    App\Models\ResultScan::create($data);
+Route::get('/danhmuc', [
+    'as' => 'danhmuc',
+    'uses' => 'HomeController@laydanhmuc'
+]);
+
+Route::post('/themdata', [
+    'as' => 'themdata',
+    'uses' => 'HomeController@themdata',
+]);
+
+Route::get('/themdata', function () {
+    return view('themdata');
 });
+
+Route::get('/timdata', function (){
+    return view('home');
+});
+
+Route::post('/timdata', [
+    'as'=> 'timdata',
+    'uses' => 'HomeController@timdata',
+]);
+
+Route::get('/datachuaconghia', [
+    'as'=> 'datachuaconghia',
+    'uses' => 'HomeController@datachuaconghia',
+]);
+
+Route::get('/datatrongngay', [
+    'as'=> 'datatrongngay',
+    'uses' => 'HomeController@datatrongngay',
+]);
+
+Route::get('/capnhat/{id}', [
+    'as'=> 'capnhat',
+    'uses' => 'HomeController@setupcapnhatdata',
+]);
+Route::post('/capnhat', [
+    'as'=> 'capnhatdata',
+    'uses' => 'HomeController@capnhatdata',
+]);
+Route::get('/xoadata/{id}', [
+    'as'=> 'xoadata',
+    'uses' => 'HomeController@xoadata',
+]);

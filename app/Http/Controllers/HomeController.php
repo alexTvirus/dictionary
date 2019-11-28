@@ -86,7 +86,8 @@ class HomeController extends Controller
         try {
             Data::destroy((int)($request['id']));
             DB::commit();
-            return redirect()->route('timdata');
+            session()->flash('msg', 'cap nhat thanh cong');
+            return back();
         } catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());

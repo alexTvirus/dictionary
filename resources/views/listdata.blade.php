@@ -6,9 +6,9 @@
             <div class="row>">
                 <!-- SELECT2 EXAMPLE -->
                 <div class="box box-primary">
-                    @if(!empty(session()->get('error')))
+                    @if(!empty(session()->get('msg')))
                         <div id="msg">
-                            {!! session()->get('error') !!}
+                            {!! session()->get('msg') !!}
                         </div>
                     @endif
 
